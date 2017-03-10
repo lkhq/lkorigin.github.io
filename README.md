@@ -1,2 +1,4 @@
 # lkorigin.github.io
-Documentation
+
+Documentation and public web resources
+for Laniakea.
