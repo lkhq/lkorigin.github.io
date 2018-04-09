@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Module laniakea.db.schema.isotope</title>
+		<link rel="stylesheet" type="text/css" href="../../../styles/ddox.css"/>
+		<link rel="stylesheet" href="../../../prettify/prettify.css" type="text/css"/>
+		<script type="text/javascript" src="../../../scripts/jquery.js">/**/</script><script type="text/javascript" src="../../../scripts/ddox.js">/**/</script>
+	</head>
+	<body onload="setupDdox();">
+		<nav id="main-nav">
+			<noscript>
+				<p style="color: red">The search functionality needs JavaScript enabled</p>
+			</noscript>
+			<div id="symbolSearchPane" style="display: none">
+				<form action="#" method="GET">
+					<input id="symbolSearch" type="text" name="q" placeholder="Search for symbols" autocomplete="off" onchange="performSymbolSearch(40);" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+				</form>
+				<ul id="symbolSearchResults" class="symbolList" style="display: none"></ul><script type="application/javascript" src="../../../symbols.js"></script><script type="application/javascript">var symbolSearchRootDir = "../../../";
+$('#symbolSearchPane').show();</script>
+			</div>
+			<ul class="tree-view">
+				<li class="tree-view collapsed">
+					<div class="package ">admin
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../../admin/admintool.html">admintool</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../admin/baseadmin.html">baseadmin</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../admin/isotopeadmin.html">isotopeadmin</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../admin/planteradmin.html">planteradmin</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../admin/spearsadmin.html">spearsadmin</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../admin/syncadmin.html">syncadmin</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">ariadne
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../../ariadne/buildscheduler.html">buildscheduler</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">datasync
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../../datasync/repodbsync.html">repodbsync</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view ">
+					<div class="package ">laniakea
+					</div>
+			<ul class="tree-view">
+				<li class="tree-view ">
+					<div class="package ">
+						<a href="../../../laniakea/db.html">db</a>
+					</div>
+			<ul class="tree-view">
+				<li class="tree-view ">
+					<div class="package ">
+						<a href="../../../laniakea/db/schema.html">schema</a>
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/db/schema/archive.html">archive</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/db/schema/ariadne.html">ariadne</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/db/schema/core.html">core</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/db/schema/debcheck.html">debcheck</a>
+					</div>
+				</li>
+				<li>
+					<div class="module selected">
+						<a href="../../../laniakea/db/schema/isotope.html">isotope</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/db/schema/jobs.html">jobs</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/db/schema/planter.html">planter</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/db/schema/spears.html">spears</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/db/schema/synchrotron.html">synchrotron</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/db/schema/workers.html">workers</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/db/database.html">database</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/db/utils.html">utils</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">
+						<a href="../../../laniakea/repository.html">repository</a>
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/repository/dak.html">dak</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/repository/dscfile.html">dscfile</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/repository/repository.html">repository</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">
+						<a href="../../../laniakea/utils.html">utils</a>
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/utils/consts.html">consts</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/utils/gpg.html">gpg</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/utils/namegen.html">namegen</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/utils/utils.html">utils</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/utils/versioncmp.html">versioncmp</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/compressed.html">compressed</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/debcheck.html">debcheck</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/downloadmanager.html">downloadmanager</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/git.html">git</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/localconfig.html">localconfig</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/logging.html">logging</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/net.html">net</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../laniakea/tagfile.html">tagfile</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">lighthouse
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../../lighthouse/utils.html">utils</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../lighthouse/worker.html">worker</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">planter
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../../planter/germinate.html">germinate</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">rubicon
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../../rubicon/fileimport.html">fileimport</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../rubicon/importisotope.html">importisotope</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../rubicon/rubiconfig.html">rubiconfig</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">spears
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../../spears/britney.html">britney</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../spears/britneyconfig.html">britneyconfig</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../../spears/excuses.html">excuses</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">synchrotron
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../../synchrotron/syncengine.html">syncengine</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+			</ul>
+		</nav>
+		<div id="main-contents">
+			<h1>Module laniakea.db.schema.isotope</h1><p></p>
+			<section></section>
+			<section>
+				<h2>Functions</h2>
+				<table>
+					<col class="caption"/>
+					<tr>
+						<th>Name</th><th>Description</th>
+					</tr>
+					<tr>
+						<td>
+							<code>
+								<a id="createTables" class="public" href="../../../laniakea/db/schema/isotope/createTables.html">createTables</a><span class="decoration">(db)</span>
+							</code>
+						</td>
+						<td>Create initial tables for this module.
+</td>
+					</tr>
+					<tr>
+						<td>
+							<code>
+								<a id="getBuildRecipes" class="public" href="../../../laniakea/db/schema/isotope/getBuildRecipes.html">getBuildRecipes</a><span class="decoration">(conn, limit, offset)</span>
+							</code>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<code>
+								<a id="getRecipeById" class="public" href="../../../laniakea/db/schema/isotope/getRecipeById.html">getRecipeById</a><span class="decoration">(conn, uuid)</span>
+							</code>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<code>
+								<a id="getRecipeByName" class="public" href="../../../laniakea/db/schema/isotope/getRecipeByName.html">getRecipeByName</a><span class="decoration">(conn, name)</span>
+							</code>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<code>
+								<a id="update" class="public" href="../../../laniakea/db/schema/isotope/update.html">update</a><span class="decoration">(conn, recipe)</span>
+							</code>
+						</td>
+						<td>Add/update image build recipe.
+</td>
+					</tr>
+				</table>
+			</section>
+			<section>
+				<h2>Structs</h2>
+				<table>
+					<col class="caption"/>
+					<tr>
+						<th>Name</th><th>Description</th>
+					</tr>
+					<tr>
+						<td>
+							<code>
+								<a id="ImageBuildRecipe" class="public" href="../../../laniakea/db/schema/isotope/ImageBuildRecipe.html">ImageBuildRecipe</a>
+							</code>
+						</td>
+						<td>Instructions on how to do an automatic ISO image build.
+</td>
+					</tr>
+				</table>
+			</section>
+			<footer>
+				<table class="license-info">
+					<tr>
+						<th>Authors</th>
+						<td>
+							
+						</td>
+					</tr>
+					<tr>
+						<th>Copyright</th>
+						<td>
+							
+						</td>
+					</tr>
+					<tr>
+						<th>License</th>
+						<td>
+							
+						</td>
+					</tr>
+				</table>
+				<p class="faint">Generated using the DDOX documentation generator</p>
+			</footer>
+		</div>
+	</body>
+</html>

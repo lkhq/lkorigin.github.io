@@ -1,0 +1,264 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome\n\n\nWelcome to the Laniakea documentation!\n\n\nThis is a work in progress, not much documentation exists at this point.",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome",
+            "text": "Welcome to the Laniakea documentation!  This is a work in progress, not much documentation exists at this point.",
+            "title": "Welcome"
+        },
+        {
+            "location": "/core/api/",
+            "text": "API Documentation\n\n\nYou can find the documentation of Laniakea's API\n\non these pages\n.",
+            "title": "Api"
+        },
+        {
+            "location": "/core/api/#api-documentation",
+            "text": "You can find the documentation of Laniakea's API on these pages .",
+            "title": "API Documentation"
+        },
+        {
+            "location": "/core/design-principles/",
+            "text": "Design Principles\n\n\nLaniakea is developed with a couple of fundamental design principles in mind, that guide the way design\ndecisions are made in the project, and are helpful for developing new modules.\nThis page contains a list of them, as well as a rationale for them.\n\n\nIf you make a change to Laniakea, please ensure you followed these principles.\n\n\nThe database is the one and only source for information\n\n\nIn previous solutions, a lot of components of the technical infrastructure had their own configuration files.\nThis basically required configuration management solutions, and required values to be changed across\na large amount of modules, even if it was the same value. For example, changing the current development suite\nhad to be done in at least 5 configuration files additionally to the main database.\nAdding fine grained permissions on which user could change what value was made basically impossible.\nAdditionally, we were constantly syncing data across machines and duplicating it in order to satisfy the requirement\nfor each tool, resulting in tools working with outdated information quite frequently.\n\n\nTo avoid this complexity, Laniakea enforces all modules to publish their data and configuration in the database,\neven if it is only ever consumed by the module itself. This ensures that we can have modules reuse data generated\nby other modules and create nice synergy effects (e.g. the Debcheck data is consumed by the package-sync module as\nwell as the website and build scheduling), as well as having a central place to modify configuration.\nThere are only two exceptions to this rule:\n\n\n\n\nIf data is specific to the current machine, it has to be placed in a configuration file in \n/etc/laniakea/\n (e.g. database connection, ZMQ ports, executable locations, ...)\n\n\nIf the data is not suitable for database storage (e.g. build artifacts, large binaries) it should be stored in a well-known location and only have a reference in the database\n\n\n\n\nDo add an external tool to Laniakea, usually a wrapper module is written that generates the tool-specific configuration from\nLaniakea database data and imports its output data back into the database.\n\n\nNo specialized workers\n\n\nIf you want to extend the speed at which Laniakea performs long-running task, you only ever should have to add\nnew machines to a cluster running a wide array of tasks already. This ensures we don't have machines which\nbuild disk images being under heavy load while package builders are currently idling, and similar issues.\nTherefore, if possible, Laniakea modules should add dedicated code they need for performing a long-running\ntask to the \nlaniakea-spark\n generic job runner, and have the jobs scheduled by the global job scheduling\nbuilt into the system already.\n\n\nModular, but highly integrated\n\n\nWith the exception of some core modules, every module in Laniakea should be optional, and users should be\nable not to use it. E.g. if people don't want the package migration support, they can just decide to disable\nor even not install the \nspears\n module.\nAt the same time, modules should be highly integrated and are allowed to have dependencies on each other.\nAll modules should be managed via the same interface (web, or \nlk-admin\n), and are located in the same\nrepository to easily share code and make global changes on the system.\n\n\nAvoid timed triggers\n\n\nModules are able to receive messages on events from the \nLighthouse\n messaging hub. These messages should\nalways be preferred as triggers for actions over any time-based (cron-job) action.\n\n\nGet rid of humans\n\n\nIf Laniakea has enough information to automatically and reliably perform a certain action,\nit should always do so automatically, without needing a human to look at the changes again\n(with, depending on the action, an option to turn the automatism off).\nThis is true for, for example, transition job scheduling.\n\n\nAvoid shell scripts\n\n\nThis is basically the result of looking too much at the code of DAK: If you start with a very simple shell\nscript for a very simple task (and call it \"configuration\"), chances are that over time it might grow into a large and\ncomplex monstrosity. Don't let it get to that. Extend the code of Laniakea directly if it does not yet do exactly what\nyou want - adding tiny but helpful commands is encouraged over working around that with scripting.\n\n\nLaniakea is written in D and Python\n\n\nIt's tempting to write code in a different programming language that might be more suited to the job, but each new programming\nlanguage a project is written in creates a higher entry barrier for new people to join and modify the code. It also\nmakes maintenance much harder and increases the difficulty for users to set up the project.\nTherefore, Laniakea is written in D, with a few parts being done in Python, and no new programming language will be added.",
+            "title": "Design principles"
+        },
+        {
+            "location": "/core/design-principles/#design-principles",
+            "text": "Laniakea is developed with a couple of fundamental design principles in mind, that guide the way design\ndecisions are made in the project, and are helpful for developing new modules.\nThis page contains a list of them, as well as a rationale for them.  If you make a change to Laniakea, please ensure you followed these principles.",
+            "title": "Design Principles"
+        },
+        {
+            "location": "/core/design-principles/#the-database-is-the-one-and-only-source-for-information",
+            "text": "In previous solutions, a lot of components of the technical infrastructure had their own configuration files.\nThis basically required configuration management solutions, and required values to be changed across\na large amount of modules, even if it was the same value. For example, changing the current development suite\nhad to be done in at least 5 configuration files additionally to the main database.\nAdding fine grained permissions on which user could change what value was made basically impossible.\nAdditionally, we were constantly syncing data across machines and duplicating it in order to satisfy the requirement\nfor each tool, resulting in tools working with outdated information quite frequently.  To avoid this complexity, Laniakea enforces all modules to publish their data and configuration in the database,\neven if it is only ever consumed by the module itself. This ensures that we can have modules reuse data generated\nby other modules and create nice synergy effects (e.g. the Debcheck data is consumed by the package-sync module as\nwell as the website and build scheduling), as well as having a central place to modify configuration.\nThere are only two exceptions to this rule:   If data is specific to the current machine, it has to be placed in a configuration file in  /etc/laniakea/  (e.g. database connection, ZMQ ports, executable locations, ...)  If the data is not suitable for database storage (e.g. build artifacts, large binaries) it should be stored in a well-known location and only have a reference in the database   Do add an external tool to Laniakea, usually a wrapper module is written that generates the tool-specific configuration from\nLaniakea database data and imports its output data back into the database.",
+            "title": "The database is the one and only source for information"
+        },
+        {
+            "location": "/core/design-principles/#no-specialized-workers",
+            "text": "If you want to extend the speed at which Laniakea performs long-running task, you only ever should have to add\nnew machines to a cluster running a wide array of tasks already. This ensures we don't have machines which\nbuild disk images being under heavy load while package builders are currently idling, and similar issues.\nTherefore, if possible, Laniakea modules should add dedicated code they need for performing a long-running\ntask to the  laniakea-spark  generic job runner, and have the jobs scheduled by the global job scheduling\nbuilt into the system already.",
+            "title": "No specialized workers"
+        },
+        {
+            "location": "/core/design-principles/#modular-but-highly-integrated",
+            "text": "With the exception of some core modules, every module in Laniakea should be optional, and users should be\nable not to use it. E.g. if people don't want the package migration support, they can just decide to disable\nor even not install the  spears  module.\nAt the same time, modules should be highly integrated and are allowed to have dependencies on each other.\nAll modules should be managed via the same interface (web, or  lk-admin ), and are located in the same\nrepository to easily share code and make global changes on the system.",
+            "title": "Modular, but highly integrated"
+        },
+        {
+            "location": "/core/design-principles/#avoid-timed-triggers",
+            "text": "Modules are able to receive messages on events from the  Lighthouse  messaging hub. These messages should\nalways be preferred as triggers for actions over any time-based (cron-job) action.",
+            "title": "Avoid timed triggers"
+        },
+        {
+            "location": "/core/design-principles/#get-rid-of-humans",
+            "text": "If Laniakea has enough information to automatically and reliably perform a certain action,\nit should always do so automatically, without needing a human to look at the changes again\n(with, depending on the action, an option to turn the automatism off).\nThis is true for, for example, transition job scheduling.",
+            "title": "Get rid of humans"
+        },
+        {
+            "location": "/core/design-principles/#avoid-shell-scripts",
+            "text": "This is basically the result of looking too much at the code of DAK: If you start with a very simple shell\nscript for a very simple task (and call it \"configuration\"), chances are that over time it might grow into a large and\ncomplex monstrosity. Don't let it get to that. Extend the code of Laniakea directly if it does not yet do exactly what\nyou want - adding tiny but helpful commands is encouraged over working around that with scripting.",
+            "title": "Avoid shell scripts"
+        },
+        {
+            "location": "/core/design-principles/#laniakea-is-written-in-d-and-python",
+            "text": "It's tempting to write code in a different programming language that might be more suited to the job, but each new programming\nlanguage a project is written in creates a higher entry barrier for new people to join and modify the code. It also\nmakes maintenance much harder and increases the difficulty for users to set up the project.\nTherefore, Laniakea is written in D, with a few parts being done in Python, and no new programming language will be added.",
+            "title": "Laniakea is written in D and Python"
+        },
+        {
+            "location": "/core/initial-setup/",
+            "text": "Initial Setup\n\n\nTODO",
+            "title": "Initial setup"
+        },
+        {
+            "location": "/core/initial-setup/#initial-setup",
+            "text": "",
+            "title": "Initial Setup"
+        },
+        {
+            "location": "/core/initial-setup/#todo",
+            "text": "",
+            "title": "TODO"
+        },
+        {
+            "location": "/core/modules/datasync/",
+            "text": "DataSync - synchronize data from 3rd-party internal sources\n\n\nThe DataSync utility is a workaround to import archive data from a repository that is not\nunder Laniakea's direct control. This module mght be superseded by a more sophisticated\nsolution in future.\n\n\nTODO",
+            "title": "Datasync"
+        },
+        {
+            "location": "/core/modules/datasync/#datasync-synchronize-data-from-3rd-party-internal-sources",
+            "text": "The DataSync utility is a workaround to import archive data from a repository that is not\nunder Laniakea's direct control. This module mght be superseded by a more sophisticated\nsolution in future.",
+            "title": "DataSync - synchronize data from 3rd-party internal sources"
+        },
+        {
+            "location": "/core/modules/datasync/#todo",
+            "text": "",
+            "title": "TODO"
+        },
+        {
+            "location": "/core/modules/lighthouse/",
+            "text": "Lighthouse - communication relay\n\n\nLaniakea modules are almost always their own executables or even services. This allows to run them on separate\nmachines, to improve security by isolation or to balance load.\n\n\nThe \nLighthouse\n core module is a daemon that provides a way for Laniakea modules to get notified about changes,\ndistribute jobs to them and receive information to store in the database.\n\n\nThere can be an arbitrary number of Lighthouse instances on multiple servers. Due to Lighthouse directly\ndistributing jobs and interacting with the central database, currently each Lighthouse server needs write access\nto a Postgres database.\n\n\nTODO\n\n\n\n\nAbout the name\n\n\nA lighthouse guides ships on the sea to stay on course. The same way the Lighthouse module is a fixpoint for Laniakea\nmodules, and is the place they gets tasks and information from (if they don't have a direct database connection already).",
+            "title": "Lighthouse"
+        },
+        {
+            "location": "/core/modules/lighthouse/#lighthouse-communication-relay",
+            "text": "Laniakea modules are almost always their own executables or even services. This allows to run them on separate\nmachines, to improve security by isolation or to balance load.  The  Lighthouse  core module is a daemon that provides a way for Laniakea modules to get notified about changes,\ndistribute jobs to them and receive information to store in the database.  There can be an arbitrary number of Lighthouse instances on multiple servers. Due to Lighthouse directly\ndistributing jobs and interacting with the central database, currently each Lighthouse server needs write access\nto a Postgres database.",
+            "title": "Lighthouse - communication relay"
+        },
+        {
+            "location": "/core/modules/lighthouse/#todo",
+            "text": "",
+            "title": "TODO"
+        },
+        {
+            "location": "/core/modules/lighthouse/#about-the-name",
+            "text": "A lighthouse guides ships on the sea to stay on course. The same way the Lighthouse module is a fixpoint for Laniakea\nmodules, and is the place they gets tasks and information from (if they don't have a direct database connection already).",
+            "title": "About the name"
+        },
+        {
+            "location": "/core/modules/rubicon/",
+            "text": "Rubicon - import artifacts into a trusted area\n\n\nRubicon imports (build)artifacts from a less-trusted space into a trusted area. It verifies GPG signatures of the\nartifacts against a trusted keyring, and if the files can be trusted, moves them to a predefined location.\n\n\nIt can be used for importing arbitrary files, as long as they are accompanied by a signed \n.dud\n (\"Debian Upload Description\") file.\n\n\nTODO\n\n\n\n\nAbout the name\n\n\nThe \nRubicon\n river was historically the border between the Roman province Cisalpine Gaul and Italy.\nGovernors of northern provinces were not allowed to cross it with their troups, doing so was a capital offense (something that a certain\nJulius Caesar famously ignored). The \nrubicon\n tool ensures only trusted allies cross the border in Laniakea.",
+            "title": "Rubicon"
+        },
+        {
+            "location": "/core/modules/rubicon/#rubicon-import-artifacts-into-a-trusted-area",
+            "text": "Rubicon imports (build)artifacts from a less-trusted space into a trusted area. It verifies GPG signatures of the\nartifacts against a trusted keyring, and if the files can be trusted, moves them to a predefined location.  It can be used for importing arbitrary files, as long as they are accompanied by a signed  .dud  (\"Debian Upload Description\") file.",
+            "title": "Rubicon - import artifacts into a trusted area"
+        },
+        {
+            "location": "/core/modules/rubicon/#todo",
+            "text": "",
+            "title": "TODO"
+        },
+        {
+            "location": "/core/modules/rubicon/#about-the-name",
+            "text": "The  Rubicon  river was historically the border between the Roman province Cisalpine Gaul and Italy.\nGovernors of northern provinces were not allowed to cross it with their troups, doing so was a capital offense (something that a certain\nJulius Caesar famously ignored). The  rubicon  tool ensures only trusted allies cross the border in Laniakea.",
+            "title": "About the name"
+        },
+        {
+            "location": "/core/tools/lk-admin/",
+            "text": "The lk-admin tool\n\n\nAdminister your Laniakea instance from the command line.\n\n\nTODO",
+            "title": "Lk admin"
+        },
+        {
+            "location": "/core/tools/lk-admin/#the-lk-admin-tool",
+            "text": "Administer your Laniakea instance from the command line.",
+            "title": "The lk-admin tool"
+        },
+        {
+            "location": "/core/tools/lk-admin/#todo",
+            "text": "",
+            "title": "TODO"
+        },
+        {
+            "location": "/core/tools/lk-keytool/",
+            "text": "The lk-keytool tool\n\n\nGenerate and deploy cryptographic keys for Laniakea services using GnuPG or CurveZMQ.\n\n\nTODO",
+            "title": "Lk keytool"
+        },
+        {
+            "location": "/core/tools/lk-keytool/#the-lk-keytool-tool",
+            "text": "Generate and deploy cryptographic keys for Laniakea services using GnuPG or CurveZMQ.",
+            "title": "The lk-keytool tool"
+        },
+        {
+            "location": "/core/tools/lk-keytool/#todo",
+            "text": "",
+            "title": "TODO"
+        },
+        {
+            "location": "/modules/debcheck/",
+            "text": "DebCheck - find issues in package installability\n\n\nThe DebCheck optional modules uses \ndose3\n to determine which packages are installable and have their\nbuild dependencies satisfied.\nIts reports can be viewed with the web UI. DebCheck is a requirement of other modules, e.g. Ariadne.\n\n\nTODO",
+            "title": "Debcheck"
+        },
+        {
+            "location": "/modules/debcheck/#debcheck-find-issues-in-package-installability",
+            "text": "The DebCheck optional modules uses  dose3  to determine which packages are installable and have their\nbuild dependencies satisfied.\nIts reports can be viewed with the web UI. DebCheck is a requirement of other modules, e.g. Ariadne.",
+            "title": "DebCheck - find issues in package installability"
+        },
+        {
+            "location": "/modules/debcheck/#todo",
+            "text": "",
+            "title": "TODO"
+        },
+        {
+            "location": "/modules/isotope/",
+            "text": "Isotope - build disk images\n\n\nTODO",
+            "title": "Isotope"
+        },
+        {
+            "location": "/modules/isotope/#isotope-build-disk-images",
+            "text": "",
+            "title": "Isotope - build disk images"
+        },
+        {
+            "location": "/modules/isotope/#todo",
+            "text": "",
+            "title": "TODO"
+        },
+        {
+            "location": "/modules/planter/",
+            "text": "Planter - generate metapackage seeds\n\n\nThe Planter module is a thin wrapper around \ngerminator\n to generate a table of which packages are pulled in\nfor a metapackage, and why.\nIt is commonly used to build metapackages to select the default components found on the OS.\n\n\nTODO",
+            "title": "Planter"
+        },
+        {
+            "location": "/modules/planter/#planter-generate-metapackage-seeds",
+            "text": "The Planter module is a thin wrapper around  germinator  to generate a table of which packages are pulled in\nfor a metapackage, and why.\nIt is commonly used to build metapackages to select the default components found on the OS.",
+            "title": "Planter - generate metapackage seeds"
+        },
+        {
+            "location": "/modules/planter/#todo",
+            "text": "",
+            "title": "TODO"
+        },
+        {
+            "location": "/modules/spears/",
+            "text": "Spears - migrate packages between suites\n\n\nSpears is a wrapper around \nBritney2\n, which is used to migrate packages from a source to a target suite as long as they\ndo not break installability in the target suite and fulfill other criteria, e.g. pass tests or fulfill a time limit.\n\n\nTODO\n\n\n\n\nAbout the name\n\n\nThe module is named after singer Britney Spears, for obvious reasons (the first result you get when you search for \"Britney\" on the internet).",
+            "title": "Spears"
+        },
+        {
+            "location": "/modules/spears/#spears-migrate-packages-between-suites",
+            "text": "Spears is a wrapper around  Britney2 , which is used to migrate packages from a source to a target suite as long as they\ndo not break installability in the target suite and fulfill other criteria, e.g. pass tests or fulfill a time limit.",
+            "title": "Spears - migrate packages between suites"
+        },
+        {
+            "location": "/modules/spears/#todo",
+            "text": "",
+            "title": "TODO"
+        },
+        {
+            "location": "/modules/spears/#about-the-name",
+            "text": "The module is named after singer Britney Spears, for obvious reasons (the first result you get when you search for \"Britney\" on the internet).",
+            "title": "About the name"
+        },
+        {
+            "location": "/modules/synchrotron/",
+            "text": "Synchrotron - synchronize packages with another distribution\n\n\nSynchrotron can import packages from another dustribution into the repositories of the target, ensuring changes made in the\ntarget distribution are kept.\nIt provides various methods to control the flow of packages. At the moment, synchronization is a one-way street from the source distribution\nto the target derivative.\n\n\nTODO\n\n\n\n\nAbout the name",
+            "title": "Synchrotron"
+        },
+        {
+            "location": "/modules/synchrotron/#synchrotron-synchronize-packages-with-another-distribution",
+            "text": "Synchrotron can import packages from another dustribution into the repositories of the target, ensuring changes made in the\ntarget distribution are kept.\nIt provides various methods to control the flow of packages. At the moment, synchronization is a one-way street from the source distribution\nto the target derivative.",
+            "title": "Synchrotron - synchronize packages with another distribution"
+        },
+        {
+            "location": "/modules/synchrotron/#todo",
+            "text": "",
+            "title": "TODO"
+        },
+        {
+            "location": "/modules/synchrotron/#about-the-name",
+            "text": "",
+            "title": "About the name"
+        },
+        {
+            "location": "/web/general/",
+            "text": "Laniakea Web Services\n\n\nTODO",
+            "title": "General"
+        },
+        {
+            "location": "/web/general/#laniakea-web-services",
+            "text": "TODO",
+            "title": "Laniakea Web Services"
+        }
+    ]
+}

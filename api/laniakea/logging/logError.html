@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Function logError</title>
+		<link rel="stylesheet" type="text/css" href="../../styles/ddox.css"/>
+		<link rel="stylesheet" href="../../prettify/prettify.css" type="text/css"/>
+		<script type="text/javascript" src="../../scripts/jquery.js">/**/</script><script type="text/javascript" src="../../scripts/ddox.js">/**/</script>
+	</head>
+	<body onload="setupDdox();">
+		<nav id="main-nav">
+			<noscript>
+				<p style="color: red">The search functionality needs JavaScript enabled</p>
+			</noscript>
+			<div id="symbolSearchPane" style="display: none">
+				<form action="#" method="GET">
+					<input id="symbolSearch" type="text" name="q" placeholder="Search for symbols" autocomplete="off" onchange="performSymbolSearch(40);" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+				</form>
+				<ul id="symbolSearchResults" class="symbolList" style="display: none"></ul><script type="application/javascript" src="../../symbols.js"></script><script type="application/javascript">var symbolSearchRootDir = "../../";
+$('#symbolSearchPane').show();</script>
+			</div>
+			<ul class="tree-view">
+				<li class="tree-view collapsed">
+					<div class="package ">admin
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../admin/admintool.html">admintool</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../admin/baseadmin.html">baseadmin</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../admin/isotopeadmin.html">isotopeadmin</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../admin/planteradmin.html">planteradmin</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../admin/spearsadmin.html">spearsadmin</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../admin/syncadmin.html">syncadmin</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">ariadne
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../ariadne/buildscheduler.html">buildscheduler</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">datasync
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../datasync/repodbsync.html">repodbsync</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view ">
+					<div class="package ">laniakea
+					</div>
+			<ul class="tree-view">
+				<li class="tree-view collapsed">
+					<div class="package ">
+						<a href="../../laniakea/db.html">db</a>
+					</div>
+			<ul class="tree-view">
+				<li class="tree-view collapsed">
+					<div class="package ">
+						<a href="../../laniakea/db/schema.html">schema</a>
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/schema/archive.html">archive</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/schema/ariadne.html">ariadne</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/schema/core.html">core</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/schema/debcheck.html">debcheck</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/schema/isotope.html">isotope</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/schema/jobs.html">jobs</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/schema/planter.html">planter</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/schema/spears.html">spears</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/schema/synchrotron.html">synchrotron</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/schema/workers.html">workers</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/database.html">database</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/db/utils.html">utils</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">
+						<a href="../../laniakea/repository.html">repository</a>
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/repository/dak.html">dak</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/repository/dscfile.html">dscfile</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/repository/repository.html">repository</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">
+						<a href="../../laniakea/utils.html">utils</a>
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/utils/consts.html">consts</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/utils/gpg.html">gpg</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/utils/namegen.html">namegen</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/utils/utils.html">utils</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/utils/versioncmp.html">versioncmp</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/compressed.html">compressed</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/debcheck.html">debcheck</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/downloadmanager.html">downloadmanager</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/git.html">git</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/localconfig.html">localconfig</a>
+					</div>
+				</li>
+				<li>
+					<div class="module selected">
+						<a href="../../laniakea/logging.html">logging</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/net.html">net</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../laniakea/tagfile.html">tagfile</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">lighthouse
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../lighthouse/utils.html">utils</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../lighthouse/worker.html">worker</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">planter
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../planter/germinate.html">germinate</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">rubicon
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../rubicon/fileimport.html">fileimport</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../rubicon/importisotope.html">importisotope</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../rubicon/rubiconfig.html">rubiconfig</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">spears
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../spears/britney.html">britney</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../spears/britneyconfig.html">britneyconfig</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../spears/excuses.html">excuses</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+				<li class="tree-view collapsed">
+					<div class="package ">synchrotron
+					</div>
+			<ul class="tree-view">
+				<li>
+					<div class="module ">
+						<a href="../../synchrotron/syncengine.html">syncengine</a>
+					</div>
+				</li>
+			</ul>
+				</li>
+			</ul>
+		</nav>
+		<div id="main-contents">
+			<h1>Function logError</h1><p></p>
+			<div class="prototype">
+				<code class="lang-d">
+					<div class="single-prototype">
+			<span class="typ">void</span> <span class="pln">logError</span>(string, Args...)
+			<span class="pun">(</span>
+			<br/>
+			&nbsp;&nbsp;<span class="kwd">const </span><span class="typ">string</span> <span class="pln">tmpl</span><span class="pun">,</span>
+			<br/>
+			&nbsp;&nbsp;<span class="kwd">const </span><span class="typ">Args</span> <span class="pln">args</span>
+			<br/>
+			<span class="pun">)</span><span class="pln"> </span><span class="kwd">@safe</span><span class="pun">;</span>
+					</div>
+				</code>
+			</div>
+			
+			
+			<footer>
+				<table class="license-info">
+					<tr>
+						<th>Authors</th>
+						<td>
+							
+						</td>
+					</tr>
+					<tr>
+						<th>Copyright</th>
+						<td>
+							
+						</td>
+					</tr>
+					<tr>
+						<th>License</th>
+						<td>
+							
+						</td>
+					</tr>
+				</table>
+				<p class="faint">Generated using the DDOX documentation generator</p>
+			</footer>
+		</div>
+	</body>
+</html>

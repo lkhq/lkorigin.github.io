@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Design principles - Laniakea</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Laniakea</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Core <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../api/">Api</a>
+</li>
+                            
+<li class="active">
+    <a href="./">Design principles</a>
+</li>
+                            
+<li >
+    <a href="../initial-setup/">Initial setup</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Modules</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../modules/datasync/">Datasync</a>
+</li>
+            
+<li >
+    <a href="../modules/lighthouse/">Lighthouse</a>
+</li>
+            
+<li >
+    <a href="../modules/rubicon/">Rubicon</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Tools</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../tools/lk-admin/">Lk admin</a>
+</li>
+            
+<li >
+    <a href="../tools/lk-keytool/">Lk keytool</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Modules <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../modules/debcheck/">Debcheck</a>
+</li>
+                            
+<li >
+    <a href="../../modules/isotope/">Isotope</a>
+</li>
+                            
+<li >
+    <a href="../../modules/planter/">Planter</a>
+</li>
+                            
+<li >
+    <a href="../../modules/spears/">Spears</a>
+</li>
+                            
+<li >
+    <a href="../../modules/synchrotron/">Synchrotron</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../web/general/">General</a>
+</li>
+                        </ul>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../api/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../initial-setup/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/lkorigin/laniakea">
+                                <i class="fa fa-github"></i>GitHub
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#design-principles">Design Principles</a></li>
+            <li><a href="#the-database-is-the-one-and-only-source-for-information">The database is the one and only source for information</a></li>
+            <li><a href="#no-specialized-workers">No specialized workers</a></li>
+            <li><a href="#modular-but-highly-integrated">Modular, but highly integrated</a></li>
+            <li><a href="#avoid-timed-triggers">Avoid timed triggers</a></li>
+            <li><a href="#get-rid-of-humans">Get rid of humans</a></li>
+            <li><a href="#avoid-shell-scripts">Avoid shell scripts</a></li>
+            <li><a href="#laniakea-is-written-in-d-and-python">Laniakea is written in D and Python</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="design-principles">Design Principles</h1>
+<p>Laniakea is developed with a couple of fundamental design principles in mind, that guide the way design
+decisions are made in the project, and are helpful for developing new modules.
+This page contains a list of them, as well as a rationale for them.</p>
+<p>If you make a change to Laniakea, please ensure you followed these principles.</p>
+<h3 id="the-database-is-the-one-and-only-source-for-information">The database is the one and only source for information</h3>
+<p>In previous solutions, a lot of components of the technical infrastructure had their own configuration files.
+This basically required configuration management solutions, and required values to be changed across
+a large amount of modules, even if it was the same value. For example, changing the current development suite
+had to be done in at least 5 configuration files additionally to the main database.
+Adding fine grained permissions on which user could change what value was made basically impossible.
+Additionally, we were constantly syncing data across machines and duplicating it in order to satisfy the requirement
+for each tool, resulting in tools working with outdated information quite frequently.</p>
+<p>To avoid this complexity, Laniakea enforces all modules to publish their data and configuration in the database,
+even if it is only ever consumed by the module itself. This ensures that we can have modules reuse data generated
+by other modules and create nice synergy effects (e.g. the Debcheck data is consumed by the package-sync module as
+well as the website and build scheduling), as well as having a central place to modify configuration.
+There are only two exceptions to this rule:</p>
+<ul>
+<li>If data is specific to the current machine, it has to be placed in a configuration file in <code>/etc/laniakea/</code> (e.g. database connection, ZMQ ports, executable locations, ...)</li>
+<li>If the data is not suitable for database storage (e.g. build artifacts, large binaries) it should be stored in a well-known location and only have a reference in the database</li>
+</ul>
+<p>Do add an external tool to Laniakea, usually a wrapper module is written that generates the tool-specific configuration from
+Laniakea database data and imports its output data back into the database.</p>
+<h3 id="no-specialized-workers">No specialized workers</h3>
+<p>If you want to extend the speed at which Laniakea performs long-running task, you only ever should have to add
+new machines to a cluster running a wide array of tasks already. This ensures we don't have machines which
+build disk images being under heavy load while package builders are currently idling, and similar issues.
+Therefore, if possible, Laniakea modules should add dedicated code they need for performing a long-running
+task to the <em>laniakea-spark</em> generic job runner, and have the jobs scheduled by the global job scheduling
+built into the system already.</p>
+<h3 id="modular-but-highly-integrated">Modular, but highly integrated</h3>
+<p>With the exception of some core modules, every module in Laniakea should be optional, and users should be
+able not to use it. E.g. if people don't want the package migration support, they can just decide to disable
+or even not install the <em>spears</em> module.
+At the same time, modules should be highly integrated and are allowed to have dependencies on each other.
+All modules should be managed via the same interface (web, or <code>lk-admin</code>), and are located in the same
+repository to easily share code and make global changes on the system.</p>
+<h3 id="avoid-timed-triggers">Avoid timed triggers</h3>
+<p>Modules are able to receive messages on events from the <em>Lighthouse</em> messaging hub. These messages should
+always be preferred as triggers for actions over any time-based (cron-job) action.</p>
+<h3 id="get-rid-of-humans">Get rid of humans</h3>
+<p>If Laniakea has enough information to automatically and reliably perform a certain action,
+it should always do so automatically, without needing a human to look at the changes again
+(with, depending on the action, an option to turn the automatism off).
+This is true for, for example, transition job scheduling.</p>
+<h3 id="avoid-shell-scripts">Avoid shell scripts</h3>
+<p>This is basically the result of looking too much at the code of DAK: If you start with a very simple shell
+script for a very simple task (and call it "configuration"), chances are that over time it might grow into a large and
+complex monstrosity. Don't let it get to that. Extend the code of Laniakea directly if it does not yet do exactly what
+you want - adding tiny but helpful commands is encouraged over working around that with scripting.</p>
+<h3 id="laniakea-is-written-in-d-and-python">Laniakea is written in D and Python</h3>
+<p>It's tempting to write code in a different programming language that might be more suited to the job, but each new programming
+language a project is written in creates a higher entry barrier for new people to join and modify the code. It also
+makes maintenance much harder and increases the difficulty for users to set up the project.
+Therefore, Laniakea is written in D, with a few parts being done in Python, and no new programming language will be added.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
