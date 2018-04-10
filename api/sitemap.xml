@@ -743,7 +743,7 @@
 <url><loc>http://127.0.0.1/laniakea/localconfig/LocalConfig.databasePort.html</loc></url>
 <url><loc>http://127.0.0.1/laniakea/localconfig/LocalConfig.databaseUser.html</loc></url>
 <url><loc>http://127.0.0.1/laniakea/localconfig/LocalConfig.get.html</loc></url>
-<url><loc>http://127.0.0.1/laniakea/localconfig/LocalConfig.init.html</loc></url>
+<url><loc>http://127.0.0.1/laniakea/localconfig/LocalConfig.initialize.html</loc></url>
 <url><loc>http://127.0.0.1/laniakea/localconfig/LocalConfig.lighthouseEndpoint.html</loc></url>
 <url><loc>http://127.0.0.1/laniakea/localconfig/LocalConfig.load.html</loc></url>
 <url><loc>http://127.0.0.1/laniakea/localconfig/LocalConfig.loadFromFile.html</loc></url>

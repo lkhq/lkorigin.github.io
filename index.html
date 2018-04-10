@@ -163,14 +163,46 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#welcome">Welcome</a></li>
+            <li><a href="#development">Development</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="welcome">Welcome</h1>
 <p>Welcome to the Laniakea documentation!</p>
-<p>This is a work in progress, not much documentation exists at this point.</p>
-<p><img alt="Laniakea Overview" src="./graphics/laniakea-overview.svg" title="Laniakea Overview" /></p></div>
+<p>Laniakea is a software suite to manage Debian derivatives. It integrates tightly with <code>dak</code>, the <a href="https://wiki.debian.org/DebianDak">Debian Archive Kit</a>.
+Laniakea is built using experience from prior solutions used to maintain the Tanglu Debian derivative, which uses a full
+fork of the Debian archive and therefore needed to replicate a large portion of Debian's own infrastructure, including
+multiple QA tools.
+This software is currently in early development.</p>
+<p>Laniakea is based on the following principles:</p>
+<ul>
+<li>Have one source for all configuration</li>
+<li>Integrate components tightly, by making them speak the same protocols</li>
+<li>Minimize human interventions when maintaining a derivative</li>
+<li>Allow to manage most (all?) functions via a web interface</li>
+<li>Fine-grained permissions for project members</li>
+<li>No shell script glue</li>
+<li>Reuse existing tools whenever possible, via wrappers</li>
+</ul>
+<p>Its tasks include, but are not limited to:</p>
+<ul>
+<li>Synchronizing packages from the source distribution with the target derivative</li>
+<li>Migrating packages between suites using Britney2</li>
+<li>Building disk images for the derivative</li>
+<li>Validating installavility of packages</li>
+<li>Managing default package selections</li>
+<li>Building packages</li>
+<li>Automatically taking maintenance action on the archive (e.g. rebuilding packages)</li>
+<li>Propagate information between the archive repository, bugtrackers and other websites</li>
+<li>etc.</li>
+</ul>
+<p>Laniakea uses a lot of tools already common in the workflow of a derivative's archive maintainer, but integrates them in a nice way.</p>
+<p><img alt="Laniakea Overview" src="./graphics/laniakea-overview.svg" title="Laniakea Overview" /></p>
+<h2 id="development">Development</h2>
+<p>Laniakea is split into multiple parts which can act independently (but all speak the same protocols and share data).
+That way, more security-sensitive bits can also be isolated out and run on different machines.</p>
+<p>At the moment, not much documentation for Laniakea exists, these pages are a work in progress.</p></div>
         </div>
 
         <footer class="col-md-12">
@@ -209,5 +241,5 @@
 
 <!--
 MkDocs version : 0.16.3
-Build Date UTC : 2018-04-09 19:27:23
+Build Date UTC : 2018-04-10 00:01:47
 -->
